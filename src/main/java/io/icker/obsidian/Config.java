@@ -21,6 +21,7 @@ public class Config {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
 
         if (!file.exists()) {
+            Obsidian.LOGGER.warn("No Obisidian config file exists. All blocks will have their default blast resistance");
             return new HashMap<>();
         }
 
