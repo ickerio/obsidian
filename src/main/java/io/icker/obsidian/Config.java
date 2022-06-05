@@ -17,7 +17,7 @@ import net.fabricmc.loader.api.FabricLoader;
 public class Config {
     private static final File file = FabricLoader.getInstance().getGameDir().resolve("config").resolve("obsidian.json").toFile();
 
-    public static HashMap<String, Float> load() {
+    public static HashMap<String, HashMap<String, Float>> load() {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
 
         if (!file.exists()) {
@@ -26,7 +26,7 @@ public class Config {
         }
 
         try {
-            Type type = new TypeToken<HashMap<String, Float>>(){}.getType();
+            Type type = new TypeToken<HashMap<String, HashMap<String, Float>>>(){}.getType();
             return gson.fromJson(new FileReader(file), type);
         } catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
             Obsidian.LOGGER.warn("Could not read Obsidian config file. All blocks will have their default blast resistance");
