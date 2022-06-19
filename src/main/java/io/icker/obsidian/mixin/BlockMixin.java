@@ -18,7 +18,7 @@ public class BlockMixin {
         String key = Registry.BLOCK.getId((Block) (Object) this).toString();
 
         if (Obsidian.CONFIG.containsKey(key)) {
-            info.setReturnValue(Obsidian.CONFIG.get(key));
+            info.setReturnValue(Obsidian.CONFIG.get(key).get("resistance"));
         }
     }
 }
